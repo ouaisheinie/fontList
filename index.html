@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var zNodes=[{"id":"535da2d1e10b4b38bb2b7a2548998cfc","doMethod":"{}","sort":0,"remark":"备注","name":"名称1","pid":"0","murl":"admin/add.shtml","depth":"0"},
+    {"id":"82543a60c87840879c2d6f4685528f62","doMethod":"{}","sort":0,"remark":"备注","name":"名称2","pid":"0","murl":"admin/add.shtml","depth":"0"},
+    {"id":"8329d494f10f4a7183910e06ab5739af","doMethod":"{}","sort":0,"remark":"备注","name":"名称3","pid":"0","murl":"admin/add.shtml","depth":"0"},
+    {"id":"c22efb70d5e642b78997ef802924713e","doMethod":"{}","sort":0,"remark":"备注","name":"名称4","pid":"82543a60c87840879c2d6f4685528f62","murl":"admin/add.shtml","depth":"0"},
+    {"id":"c22efb70d5e642b78997ef8029247131e","doMethod":"{}","sort":0,"remark":"备注","name":"名称5","pid":"82543a60c87840879c2d6f4685528f62","murl":"admin/add.shtml","depth":"0"},
+    {"id":"c22efb70d5e642b78997ef8029247113e","doMethod":"{}","sort":0,"remark":"备注","name":"名称6","pid":"82543a60c87840879c2d6f4685528f62","murl":"admin/add.shtml","depth":"0"},
+
+    {"id":"2222","doMethod":"{}","sort":0,"remark":"备注","name":"名称7","pid":"82543a60c87840879c2d6f4685528f62","murl":"admin/add.shtml","depth":"0"},
+
+    {"id":"22222","doMethod":"{}","sort":0,"remark":"备注","name":"名称8","pid":"2222","murl":"admin/add.shtml","depth":"0"},
+    {"id":"222222","doMethod":"{}","sort":0,"remark":"备注","name":"名称9","pid":"2222","murl":"admin/add.shtml","depth":"0"},
+    {"id":"2122222","doMethod":"{}","sort":0,"remark":"备注","name":"名称10","pid":"2222","murl":"admin/add.shtml","depth":"0"},
+    {"id":"23212222","doMethod":"{}","sort":0,"remark":"备注","name":"名称11","pid":"2222","murl":"admin/add.shtml","depth":"0"},
+    {"id":"22321321222","doMethod":"{}","sort":0,"remark":"备注","name":"名称12","pid":"2222","murl":"admin/add.shtml","depth":"0"},
+    {"id":"22232132122","doMethod":"{}","sort":0,"remark":"备注","name":"名称13","pid":"2222","murl":"admin/add.shtml","depth":"0"},
+    {"id":"c22efb70d5e642b78997ef8029247113e","doMethod":"{}","sort":0,"remark":"备注","name":"名称14","pid":"82543a60c87840879c2d6f4685528f62","murl":"admin/add.shtml","depth":"0"},
+    {"id":"c22efb70d5e642b78997ef802924713e","doMethod":"{}","sort":0,"remark":"备注","name":"名称15","pid":"82543a60c87840879c2d6f4685528f62","murl":"admin/add.shtml","depth":"0"},
+    { "id": "83fc16a3ee1f47139e2f4c055aa9f460", "doMethod": "{}", "sort": 1, "remark": "备注1", "name": "名称16", "pid":"82543a60c87840879c2d6f4685528f62","murl":"admin/add.shtml","depth":"0"}];
+
+function toTree(data) {
+  data.forEach(item => {
+    delete item.children
+  })
+
+  var map = {}
+  data.forEach(item => {
+    map[item.id] = item
+  })
+
+  var val = []
+  data.forEach(item => {
+    var parent = map[item.pid]
+    if (parent) {
+      (parent.children || (parent.children = [])).push(item)
+    } else {
+      val.push(item)
+    }
+  })
+  return val
+}
+
+console.log(toTree(zNodes))
+
+</script>
+</body>
+</html>
